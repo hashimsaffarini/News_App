@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_app/models/article.dart';
 import 'package:news_app/utils/route/app_routes.dart';
 import 'package:news_app/view_models/search_cubit/search_cubit.dart';
 import 'package:news_app/views/pages/article_page.dart';
 import 'package:news_app/views/pages/home_page.dart';
+import 'package:news_app/views/pages/product_details_page.dart';
 import 'package:news_app/views/pages/search_page.dart';
 
 class AppRouter {
@@ -22,6 +24,12 @@ class AppRouter {
           builder: (context) => BlocProvider(
             create: (context) => SearchCubit(),
             child: const SearchPage(),
+          ),
+        );
+      case AppRoutes.productDetails:
+        return MaterialPageRoute(
+          builder: (context) => ProductDetailsPage(
+            article: settings.arguments as Article,
           ),
         );
       default:

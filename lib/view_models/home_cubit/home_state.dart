@@ -27,3 +27,15 @@ final class NewsError extends HomeState {
   final String message;
   NewsError(this.message);
 }
+
+final class GridViewsLoading extends HomeState {}
+
+final class GridViewsLoaded extends HomeState {
+  final List<Article> articles;
+  GridViewsLoaded(this.articles);
+}
+
+final class GridViewsError extends HomeState {
+  final String message;
+  GridViewsError(this.message);
+}

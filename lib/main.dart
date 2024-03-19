@@ -17,10 +17,12 @@ class MyApp extends StatelessWidget {
     return BlocProvider(
       create: (context) {
         final cubit = HomeCubit();
+        cubit.getNews();
         cubit.getSliderHeadlines();
         return cubit;
       },
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'News App',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),

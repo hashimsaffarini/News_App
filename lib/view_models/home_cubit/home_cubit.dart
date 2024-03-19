@@ -25,4 +25,20 @@ class HomeCubit extends Cubit<HomeState> {
       emit(SliderError(e.toString()));
     }
   }
+
+  Future<void> getNews() async {
+    emit(GridViewsLoading());
+    try {
+      final articles = await _homeServices.getTopHeadlines(
+        requestBody: TopHeadlinesRequestBody(
+          country: 'us',
+          page: 2,
+          pageSize: 10,
+        ),
+      );
+      emit(GridViewsLoaded(articles!));
+    } catch (e) {
+      emit(GridViewsError(e.toString()));
+    }
+  }
 }
